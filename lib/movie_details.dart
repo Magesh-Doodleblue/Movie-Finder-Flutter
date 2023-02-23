@@ -192,7 +192,7 @@ class _movieDetailsState extends State<movieDetails> {
 
                     // Add the movie object to the box
                     box.add(movieToSave);
-
+                    print(box);
                     debugPrint('bookmark ${widget.movie.title}...');
                   },
                 ),

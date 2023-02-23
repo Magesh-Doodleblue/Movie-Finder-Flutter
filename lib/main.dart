@@ -8,22 +8,14 @@ import 'models/user_adding_model.dart';
 import 'movie_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:hive/hive.dart';
-
 import 'package:path_provider/path_provider.dart' as path_provider;
-
 import "package:hive_flutter/hive_flutter.dart";
 
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   // final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-//   await Hive.initFlutter();
-//   var boxDatabase = Hive.openBox("moviesBox");
-// }
+
 late Box box;
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter<Movie>(MovieAdapter()); // Register MovieAdapter here
+  Hive.registerAdapter<Movie>(MovieAdapter());
   box = await Hive.openBox<Movie>('movies');
   runApp(const SearchPage());
 }
