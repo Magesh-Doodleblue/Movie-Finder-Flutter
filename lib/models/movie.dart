@@ -17,7 +17,6 @@ class Movie {
   final String type;
   @HiveField(5)
   final String imdbID;
-  @HiveField(6)
   Movie(
       {required this.title,
       required this.id,

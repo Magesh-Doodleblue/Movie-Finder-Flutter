@@ -178,7 +178,7 @@ class _movieDetailsState extends State<movieDetails> {
                   ),
                   onPressed: () async {
                     // Create a new instance of the Movie object with the movie details
-                    final movieToSave = Movie(
+                    final Movie movieToSave = Movie(
                       title: widget.movie.title,
                       id: 1,
                       type: widget.movie.type,
