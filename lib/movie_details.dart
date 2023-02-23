@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
+// ignore_for_file: camel_case_types, non_constant_identifier_names, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
@@ -178,21 +178,19 @@ class _movieDetailsState extends State<movieDetails> {
                   ),
                   onPressed: () async {
                     // Create a new instance of the Movie object with the movie details
-                    final Movie movieToSave = Movie(
-                      title: widget.movie.title,
-                      id: 1,
-                      type: widget.movie.type,
-                      year: widget.movie.year,
-                      imdbID: widget.movie.imdbID,
-                      poster: widget.movie.poster,
-                    );
+                    // final Movie movieToSave = Movie(
+                    //   title: widget.movie.title,
+                    //   id: 1,
+                    //   type: widget.movie.type,
+                    //   year: widget.movie.year,
+                    //   imdbID: widget.movie.imdbID,
+                    //   poster: widget.movie.poster,
+                    // );
 
-                    // Get the Hive box named "MoviesInHive"
-                    final box = await Hive.openBox<Movie>('MoviesInHive');
+                    // final box = await Hive.openBox<Movie>('MoviesInHive');
 
-                    // Add the movie object to the box
-                    box.add(movieToSave);
-                    print(box);
+                    // box.add(movieToSave);
+                    // print(box);
                     debugPrint('bookmark ${widget.movie.title}...');
                   },
                 ),

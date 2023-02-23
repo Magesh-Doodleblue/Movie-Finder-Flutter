@@ -1,6 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages, invalid_annotation_target
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
 
+// import 'package:json_annotation/json_annotation.dart';
+
+// @JsonSerializable()
 part 'movie.g.dart';
 
 @HiveType(typeId: 0)

@@ -12,11 +12,23 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import "package:hive_flutter/hive_flutter.dart";
 
 late Box box;
+// void main() async {
+//   await Hive.initFlutter();
+//   Hive.registerAdapter<Movie>(MovieAdapter());
+//   box = await Hive.openBox<Movie>('movies');
+//   runApp(const SearchPage());
+// }
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await databaseInitial();
+  runApp(const SearchPage());
+}
+
+Future<void> databaseInitial() async {
   await Hive.initFlutter();
   Hive.registerAdapter<Movie>(MovieAdapter());
   box = await Hive.openBox<Movie>('movies');
-  runApp(const SearchPage());
 }
 
 class SearchPage extends StatefulWidget {
