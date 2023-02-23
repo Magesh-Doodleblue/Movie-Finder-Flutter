@@ -20,14 +20,13 @@ import "package:hive_flutter/hive_flutter.dart";
 //   await Hive.initFlutter();
 //   var boxDatabase = Hive.openBox("moviesBox");
 // }
-
+late Box box;
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(MovieAdapter()); // Register MovieAdapter here
-  await Hive.openBox<Movie>('movies');
+  Hive.registerAdapter<Movie>(MovieAdapter()); // Register MovieAdapter here
+  box = await Hive.openBox<Movie>('movies');
   runApp(const SearchPage());
 }
-
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -52,104 +51,104 @@ class _SearchPageState extends State<SearchPage> {
         appBar: AppBar(
           title: const Text('Movies Finder'),
         ),
-        body: const hive(),
+        body: const movieApp(),
       ),
     );
   }
 }
 
-class hive extends StatefulWidget {
-  const hive({super.key});
+// class hive extends StatefulWidget {
+//   const hive({super.key});
 
-  @override
-  State<hive> createState() => _hiveState();
-}
+//   @override
+//   State<hive> createState() => _hiveState();
+// }
 
-class _hiveState extends State<hive> {
-  Future<void> starting() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    final appDocumentDir =
-        await path_provider.getApplicationDocumentsDirectory();
-    Hive.init(appDocumentDir.path);
-  }
+// class _hiveState extends State<hive> {
+//   Future<void> starting() async {
+//     WidgetsFlutterBinding.ensureInitialized();
+//     final appDocumentDir =
+//         await path_provider.getApplicationDocumentsDirectory();
+//     Hive.init(appDocumentDir.path);
+//   }
 
-// Create
-  createData() async {
-    final personBox = await Hive.openBox<Person>('persons');
+// // Create
+//   createData() async {
+//     final personBox = await Hive.openBox<Person>('persons');
 
-    final person = Person('John', 30);
-    await personBox.add(person);
+//     final person = Person('John', 30);
+//     await personBox.add(person);
 
-    if (kDebugMode) {
-      print(personBox);
-    }
-  }
+//     if (kDebugMode) {
+//       print(personBox);
+//     }
+//   }
 
-// Read
-  readData() async {
-    final personBox = await Hive.openBox<Person>('persons');
+// // Read
+//   readData() async {
+//     final personBox = await Hive.openBox<Person>('persons');
 
-    final retrievedPerson = personBox.get(0);
-    print(retrievedPerson);
-  }
-// Update
+//     final retrievedPerson = personBox.get(0);
+//     print(retrievedPerson);
+//   }
+// // Update
 
-  updateData() async {
-    final personBox = await Hive.openBox<Person>('persons');
+//   updateData() async {
+//     final personBox = await Hive.openBox<Person>('persons');
 
-    final retrievedPerson = personBox.get(0);
+//     final retrievedPerson = personBox.get(0);
 
-    retrievedPerson?.name = 'Jane';
-    await retrievedPerson?.save();
-    print(retrievedPerson);
-  }
+//     retrievedPerson?.name = 'Jane';
+//     await retrievedPerson?.save();
+//     print(retrievedPerson);
+//   }
 
-// Delete
-  deleteData() async {
-    final personBox = await Hive.openBox<Person>('persons');
+// // Delete
+//   deleteData() async {
+//     final personBox = await Hive.openBox<Person>('persons');
 
-    final retrievedPerson = personBox.get(0);
-    await retrievedPerson?.delete();
-    print(retrievedPerson);
-  }
+//     final retrievedPerson = personBox.get(0);
+//     await retrievedPerson?.delete();
+//     print(retrievedPerson);
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        ElevatedButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const movieApp()));
-            },
-            child: const Text("NEW PAGE ")),
-        ElevatedButton(
-            onPressed: () {
-              starting();
-            },
-            child: Text("INITIAL HIVE BOX")),
-        ElevatedButton(
-            onPressed: () {
-              createData();
-            },
-            child: const Text("CREATE HIVE BOX")),
-        ElevatedButton(
-            onPressed: () {
-              readData();
-            },
-            child: const Text("read data in HIVE BOX")),
-        ElevatedButton(
-            onPressed: () {
-              updateData();
-            },
-            child: const Text("Update HIVE BOX")),
-        ElevatedButton(
-            onPressed: () {
-              deleteData();
-            },
-            child: const Text("Delete HIVE BOX")),
-      ],
-    ));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         body: Column(
+//       children: [
+//         ElevatedButton(
+//             onPressed: () {
+//               Navigator.push(context,
+//                   MaterialPageRoute(builder: (context) => const movieApp()));
+//             },
+//             child: const Text("NEW PAGE ")),
+//         ElevatedButton(
+//             onPressed: () {
+//               starting();
+//             },
+//             child: const Text("INITIAL HIVE BOX")),
+//         ElevatedButton(
+//             onPressed: () {
+//               createData();
+//             },
+//             child: const Text("CREATE HIVE BOX")),
+//         ElevatedButton(
+//             onPressed: () {
+//               readData();
+//             },
+//             child: const Text("read data in HIVE BOX")),
+//         ElevatedButton(
+//             onPressed: () {
+//               updateData();
+//             },
+//             child: const Text("Update HIVE BOX")),
+//         ElevatedButton(
+//             onPressed: () {
+//               deleteData();
+//             },
+//             child: const Text("Delete HIVE BOX")),
+//       ],
+//     ));
+//   }
+// }

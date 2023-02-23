@@ -1,13 +1,23 @@
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
+
 part 'movie.g.dart';
 
+@HiveType(typeId: 0)
 class Movie {
+  @HiveField(0)
   final String title;
+  @HiveField(1)
   final int id;
+  @HiveField(2)
   final String year;
+  @HiveField(3)
   final String poster;
+  @HiveField(4)
   final String type;
+  @HiveField(5)
   final String imdbID;
-
+  @HiveField(6)
   Movie(
       {required this.title,
       required this.id,
