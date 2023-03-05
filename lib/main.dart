@@ -21,7 +21,7 @@ late Box box;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await databaseInitial();
+  // await databaseInitial();
   runApp(const SearchPage());
 }
 

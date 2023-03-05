@@ -2,14 +2,10 @@
 
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:movies/models/movie.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:hive_generator/hive_generator.dart';
-import 'package:hive/hive.dart';
 
 class movieDetails extends StatefulWidget {
   const movieDetails({super.key, required this.movie});
